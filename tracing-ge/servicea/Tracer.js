@@ -6,11 +6,20 @@ module.exports = {
 };
 
 function create(serviceName, collectorEndpoint, logger) {
+  // TODO: setup config for tracer here
     const config = {
-       // TODO: setup config for tracer here
+       serviceName: serviceName,
+        sampler: {
+            type: "const",
+            param: 1,
+        },
+        reporter: {
+            logSpans: true,
+            collectorEndpoint
+        }
     };
     const options = { logger };
-    const tracer = Jaeger.initTracer(config, options);  
+    const tracer = Jaeger.initTracer(config, options);
 
     // Use B3 Propagation Specification
     // so that Quarkus can interpret the headers
