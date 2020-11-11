@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: product
-        image: quay.io/youruser/ossm-metrics-product:1.0
+        image: quay.io/rhn_gls_rtaniguchi/ossm-metrics-product:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
